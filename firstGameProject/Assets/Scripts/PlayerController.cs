@@ -15,8 +15,8 @@ public class PlayerController : MonoBehaviour
         if (!isMoving) 
         {
             // Stick with GetAxisRaw?
-            input.x = Input.GetAxis("Horizontal");
-            input.y = Input.GetAxis("Vertical");
+            input.x = Input.GetAxisRaw("Horizontal");
+            input.y = Input.GetAxisRaw("Vertical");
 
             if (input != Vector2.zero)
             {
