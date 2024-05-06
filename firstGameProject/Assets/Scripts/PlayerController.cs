@@ -7,6 +7,14 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed;
     private bool isMoving;
     private Vector2 input;
+    private Animator animator;
+
+    // Called when script is loaded
+    private void Awake()
+    {
+        // Get the Animator component from the GameObject
+        animator = GetComponent<Animator>();
+    }
 
     // Called every frame
     private void Update()
@@ -14,12 +22,18 @@ public class PlayerController : MonoBehaviour
         // If not moving, check for input
         if (!isMoving) 
         {
-            // Stick with GetAxisRaw?
+            // Get input from player
             input.x = Input.GetAxisRaw("Horizontal");
             input.y = Input.GetAxisRaw("Vertical");
 
+            Debug.Log("x:" + input.x + " y: " + input.y);
+
             if (input != Vector2.zero)
             {
+                // If player is moving, set animation. Should stay at same direction if not moving
+                animator.SetFloat("moveX", input.x);
+                animator.SetFloat("moveY", input.y);
+
                 // transform.position is the stored position of our player, seen from Unity
                 var targetPos = transform.position;
 
@@ -30,6 +44,8 @@ public class PlayerController : MonoBehaviour
                 StartCoroutine(Move(targetPos)); // Runs constantly in our game
             }
         }
+
+        animator.SetBool("isMoving", isMoving);
     }
 
     // Unity Coroutine functions and IEnumerators
