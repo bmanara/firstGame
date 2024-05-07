@@ -36,6 +36,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        // Control movement using Rigidbody
         rb.MovePosition(rb.position + input * moveSpeed * Time.fixedDeltaTime);
     }
 
