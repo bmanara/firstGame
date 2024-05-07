@@ -6,13 +6,18 @@ public class PlayerController : MonoBehaviour
 {
     public float moveSpeed;
     private Vector2 input;
-    private Rigidbody2D rb;
+    public Rigidbody2D rbPlayer;
     private Animator animator;
+
+ 
+    private Vector2 mousePos;
+    public GameObject weapon;
+    public Rigidbody2D rbWeapon;
+    public Camera cam;
 
     // Called when script is loaded
     private void Awake()
     {
-        rb = gameObject.GetComponent<Rigidbody2D>();
         animator = gameObject.GetComponent<Animator>();
     }
 
@@ -21,6 +26,9 @@ public class PlayerController : MonoBehaviour
     {
         input.x = Input.GetAxisRaw("Horizontal");
         input.y = Input.GetAxisRaw("Vertical");
+
+        // Get position of mouse and update
+        mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
 
         if (input != Vector2.zero)
         {
@@ -37,7 +45,12 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         // Control movement using Rigidbody
-        rb.MovePosition(rb.position + input * moveSpeed * Time.fixedDeltaTime);
+        rbPlayer.MovePosition(rbPlayer.position + input * moveSpeed * Time.fixedDeltaTime);
+
+        // Control weapon aim
+        Vector2 lookDir = mousePos - rbWeapon.position;
+        float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
+        weapon.transform.rotation = Quaternion.Euler(0, 0, angle);
     }
 
     // Unity Coroutine functions and IEnumerators
