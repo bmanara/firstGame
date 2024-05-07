@@ -5,50 +5,42 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float moveSpeed;
-    private bool isMoving;
     private Vector2 input;
+    private Rigidbody2D rb;
     private Animator animator;
 
     // Called when script is loaded
     private void Awake()
     {
-        // Get the Animator component from the GameObject
-        animator = GetComponent<Animator>();
+        rb = gameObject.GetComponent<Rigidbody2D>();
+        animator = gameObject.GetComponent<Animator>();
     }
 
     // Called every frame
     private void Update()
     {
-        // If not moving, check for input
-        if (!isMoving) 
+        input.x = Input.GetAxisRaw("Horizontal");
+        input.y = Input.GetAxisRaw("Vertical");
+
+        if (input != Vector2.zero)
         {
-            // Get input from player
-            input.x = Input.GetAxisRaw("Horizontal");
-            input.y = Input.GetAxisRaw("Vertical");
-
-            Debug.Log("x:" + input.x + " y: " + input.y);
-
-            if (input != Vector2.zero)
-            {
-                // If player is moving, set animation. Should stay at same direction if not moving
-                animator.SetFloat("moveX", input.x);
-                animator.SetFloat("moveY", input.y);
-
-                // transform.position is the stored position of our player, seen from Unity
-                var targetPos = transform.position;
-
-                // Change position of player based on input
-                targetPos.x += input.x;
-                targetPos.y += input.y;
-
-                StartCoroutine(Move(targetPos)); // Runs constantly in our game
-            }
+            animator.SetFloat("moveX", input.x);
+            animator.SetFloat("moveY", input.y);
+            animator.SetBool("isMoving", true);
         }
+        else
+        {
+            animator.SetBool("isMoving", false);
+        }
+    }
 
-        animator.SetBool("isMoving", isMoving);
+    private void FixedUpdate()
+    {
+        rb.MovePosition(rb.position + input * moveSpeed * Time.fixedDeltaTime);
     }
 
     // Unity Coroutine functions and IEnumerators
+    /*
     IEnumerator Move(Vector3 targetPos)
     {
         isMoving = true;
@@ -63,4 +55,5 @@ public class PlayerController : MonoBehaviour
         transform.position = targetPos;
         isMoving = false;
     }
+    */
 }
