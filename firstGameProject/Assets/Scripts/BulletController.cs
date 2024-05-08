@@ -11,9 +11,13 @@ public class BulletController : MonoBehaviour
         // Can add more tags if needed
         // Can add animations or sound effects here as well
 
-        // Destroy the bullet after collision
-        Destroy(gameObject);
 
+        if (collision.gameObject.tag != "Player")
+        {
+            // Destroy the bullet after collision
+            Destroy(gameObject);
+        }
+        
         // Destroy the bullet after a certain amount of time
         Destroy(gameObject, 2f);
     }
