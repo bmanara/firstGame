@@ -14,8 +14,6 @@ public class WeaponPickup : MonoBehaviour
             // TODO: Add UI to show player they can pick up the weapon
             if (Input.GetKeyDown(KeyCode.E))
             {
-                Debug.Log("Pressed");
-                Destroy(GameObject.FindGameObjectWithTag("Weapons"));
                 collision.GetComponent<WeaponSwap>().UpdateWeapon(weaponToGive);
                 Destroy(gameObject);
             }

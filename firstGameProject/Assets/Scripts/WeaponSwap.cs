@@ -21,10 +21,13 @@ public class WeaponSwap : MonoBehaviour
     {
         // TODO: Add a way to drop the current weapon  
         // Instantiate(activeWeapon, weaponSlot.transform.position - Vector3.down, Quaternion.identity);
+        currWeapon.GetComponent<WeaponDrop>().dropWeapon(weaponSlot.transform.position);
         Destroy(currWeapon);
+
         activeWeapon = newWeapon;
 
         var weapon = Instantiate(activeWeapon, weaponSlot.transform.position, weaponSlot.transform.rotation);
+        currWeapon = weapon;
         weapon.transform.parent = weaponSlot.transform;
     }
 }

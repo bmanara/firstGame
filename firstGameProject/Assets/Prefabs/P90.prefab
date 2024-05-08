@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1551946905285405814}
   - component: {fileID: 3755141653811848125}
   - component: {fileID: 2130596427947956209}
+  - component: {fileID: 7480516579851326638}
   m_Layer: 0
   m_Name: P90
   m_TagString: Weapons
@@ -129,6 +130,19 @@ MonoBehaviour:
   firePoint: {fileID: 9029599425764058833}
   bulletPrefab: {fileID: 8851442216313232306, guid: d2c051be13ff4b4409d2389a3b8b88ff, type: 3}
   rbWeapon: {fileID: 3755141653811848125}
+--- !u!114 &7480516579851326638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4128040361915752196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a3b40485196b1a458ff760b9c1998a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponToDrop: {fileID: 3129824360756326270, guid: 6a69fccb7c4c0304d9b521af36484d32, type: 3}
 --- !u!1 &8955728922519607230
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 3776499568550081866}
   - component: {fileID: 4379441612399403319}
   - component: {fileID: 516101691228444618}
+  - component: {fileID: -2510766411870804336}
   m_Layer: 0
   m_Name: SVM
-  m_TagString: Untagged
+  m_TagString: Weapons
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -129,6 +130,19 @@ MonoBehaviour:
   firePoint: {fileID: 5410635811421513269}
   bulletPrefab: {fileID: 8851442216313232306, guid: d2c051be13ff4b4409d2389a3b8b88ff, type: 3}
   rbWeapon: {fileID: 4379441612399403319}
+--- !u!114 &-2510766411870804336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7254755821903228793}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a3b40485196b1a458ff760b9c1998a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponToDrop: {fileID: 2436405207555783407, guid: 9429b473745e46e4f889082541277077, type: 3}
 --- !u!1 &9141417605511948500
 GameObject:
   m_ObjectHideFlags: 0
