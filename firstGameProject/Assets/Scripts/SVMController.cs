@@ -9,6 +9,8 @@ public class Shooting : MonoBehaviour
     public GameObject bulletPrefab;
 
     private float bulletSpeed = 20f;
+    private float fireRate = 0.5f;
+    private float canFire = 0.1f;
 
     private Vector2 mousePos;
     public Rigidbody2D rbWeapon;
@@ -16,9 +18,10 @@ public class Shooting : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire1") && Time.time > canFire)
         {
             Shoot();
+            canFire = Time.time + fireRate;
         }
 
         mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
