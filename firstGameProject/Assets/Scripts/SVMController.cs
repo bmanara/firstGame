@@ -25,6 +25,18 @@ public class Shooting : MonoBehaviour
         }
 
         mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+        // Flip gun sprite based on mouse position
+        if (mousePos.x < rbWeapon.position.x)
+        {
+            // Left
+            GetComponent<SpriteRenderer>().flipY = true;
+        }
+        else
+        {
+            // Right
+            GetComponent<SpriteRenderer>().flipY = false;
+        }
     }
 
     void Shoot()
