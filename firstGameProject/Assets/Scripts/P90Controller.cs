@@ -15,6 +15,7 @@ public class P90Controller : MonoBehaviour
     public Rigidbody2D rbWeapon;
 
     // Update is called once per frame
+    // Test test
     void Update()
     {
         if (Input.GetButton("Fire1") && Time.time > canFire)
