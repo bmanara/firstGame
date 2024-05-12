@@ -13,6 +13,12 @@ public class P90Controller : MonoBehaviour
 
     private Vector2 mousePos;
     public Rigidbody2D rbWeapon;
+    public AudioManager audioManager;
+
+    void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Music").GetComponent<AudioManager>();
+    }
 
     // Update is called once per frame
     // Test test
@@ -44,6 +50,7 @@ public class P90Controller : MonoBehaviour
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         rb.AddForce(firePoint.right * bulletSpeed, ForceMode2D.Impulse);
+        audioManager.PlaySFX(audioManager.shoot);
     }
 
     private void FixedUpdate()

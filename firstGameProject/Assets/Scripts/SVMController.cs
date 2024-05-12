@@ -14,6 +14,12 @@ public class Shooting : MonoBehaviour
 
     private Vector2 mousePos;
     public Rigidbody2D rbWeapon;
+    public AudioManager audioManager;
+    
+    void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Music").GetComponent<AudioManager>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -41,6 +47,7 @@ public class Shooting : MonoBehaviour
 
     void Shoot()
     {
+        audioManager.PlaySFX(audioManager.shoot);
         // Create bullet at firePoint position and rotation
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
